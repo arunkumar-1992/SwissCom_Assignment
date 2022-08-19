@@ -1,0 +1,9 @@
+.idea/
+python-assessment.iml
+__pycache__
+**/__pycache__
+.venv
+poetry.lock
+.DS_Store
+.vscode
+python_assessment.egg-info
