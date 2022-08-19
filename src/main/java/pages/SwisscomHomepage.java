@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SwisscomHomepage {
+public class SwisscomHomepage extends SwissCom {
 	
 	public WebDriver driver;
 	//)[1]

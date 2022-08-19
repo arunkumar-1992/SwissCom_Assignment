@@ -5,7 +5,7 @@ import static org.testng.Assert.assertTrue;
 import pages.SwissCom;
 import pages.SwisscomHomepage;
 
-public class HomePageHelper extends SwissCom {
+public class HomePageHelper extends ScriptHelper {
 	
 	SwisscomHomepage homepage= new  SwisscomHomepage(driver);
 	
