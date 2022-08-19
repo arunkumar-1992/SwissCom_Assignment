@@ -8,7 +8,7 @@ public class WhenSteps {
 	
 	@When("User Searches for {string}")
 	public void user_searches_for(String string) {
-		homepage.searchForIphoneInSwisscomHomePage(string);
+		homepage.searchForGivenStringInSwisscomHomePage(string);
 	}
 	
 	
