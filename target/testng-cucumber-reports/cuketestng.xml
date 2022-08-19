@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testng-results failed="1" passed="0" skipped="0" total="1">
+    <suite duration-ms="42038" name="io.cucumber.core.plugin.TestNGFormatter">
+        <test duration-ms="42038" name="io.cucumber.core.plugin.TestNGFormatter">
+            <class name="Search Functionality">
+                <test-method duration-ms="39752" finished-at="2022-08-17T14:32:39.235049Z" name="search for iphone and internet in Swisscom homepage and verifies them" started-at="2022-08-17T14:31:59.458339700Z" status="FAIL">
+                    <exception class="The scenario has pending or undefined step(s)">
+                        <message><![CDATA[Given User Navigates to Swisscom Homepage...................................passed
+When User Searches for "iPhone".............................................passed
+Then Verify search returned "iPhone" result.................................passed
+When user navigates Swisscom homepage in another tab........................passed
+And User Selects "Apple iPhone 13"..........................................passed
+Then Verify different storage options avaialble for different colors........pending
+When User Searches for "Internet"...........................................skipped
+Then Verify search returned "Internet" result...............................skipped
+]]></message>
+                        <full-stacktrace><![CDATA[The scenario has pending or undefined step(s)]]></full-stacktrace>
+                    </exception>
+                </test-method>
+            </class>
+        </test>
+    </suite>
+</testng-results>

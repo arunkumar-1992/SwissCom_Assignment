@@ -1,0 +1,166 @@
+[
+  {
+    "line": 20,
+    "elements": [
+      {
+        "start_timestamp": "2022-08-17T14:31:59.458Z",
+        "line": 24,
+        "name": "search for iphone and internet in Swisscom homepage and verifies them",
+        "description": "",
+        "id": "search-functionality;search-for-iphone-and-internet-in-swisscom-homepage-and-verifies-them",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 17196259600,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "User Navigates to Swisscom Homepage",
+            "match": {
+              "location": "stepDefinition.GivenSteps.user_navigates_to_swisscom_homepage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3271450300,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "User Searches for \"iPhone\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"iPhone\"",
+                  "offset": 18
+                }
+              ],
+              "location": "stepDefinition.WhenSteps.user_searches_for(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1020741300,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "Verify search returned \"iPhone\" result",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"iPhone\"",
+                  "offset": 23
+                }
+              ],
+              "location": "stepDefinition.ThenSteps.verify_search_returned_result(java.lang.String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2041544300,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "user navigates Swisscom homepage in another tab",
+            "match": {
+              "location": "stepDefinition.WhenSteps.user_navigates_swisscom_homepage_in_another_tab()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 16218787300,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "User Selects \"Apple iPhone 13\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Apple iPhone 13\"",
+                  "offset": 13
+                }
+              ],
+              "location": "stepDefinition.WhenSteps.user_selects(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "io.cucumber.java.PendingException: TODO: implement me\r\n\tat stepDefinition.ThenSteps.verify_different_storage_options_avaialble_for_different_colors(ThenSteps.java:19)\r\n\tat ✽.Verify different storage options avaialble for different colors(file:///C:/SwissCom/Java_Assignment/selenium_workspace/SwissCom-HomePage/src/test/resources/features/SearchHomePage.feature:30)\r\n",
+              "duration": 3990600,
+              "status": "pending"
+            },
+            "line": 30,
+            "name": "Verify different storage options avaialble for different colors",
+            "match": {
+              "location": "stepDefinition.ThenSteps.verify_different_storage_options_avaialble_for_different_colors()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 31,
+            "name": "User Searches for \"Internet\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Internet\"",
+                  "offset": 18
+                }
+              ],
+              "location": "stepDefinition.WhenSteps.user_searches_for(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 32,
+            "name": "Verify search returned \"Internet\" result",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Internet\"",
+                  "offset": 23
+                }
+              ],
+              "location": "stepDefinition.ThenSteps.verify_search_returned_result(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Search"
+          },
+          {
+            "name": "@EndToEnd"
+          }
+        ]
+      }
+    ],
+    "name": "Search Functionality",
+    "description": "  I want to use this template for my feature file",
+    "id": "search-functionality",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/SearchHomePage.feature",
+    "tags": [
+      {
+        "name": "@Search",
+        "type": "Tag",
+        "location": {
+          "line": 19,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
