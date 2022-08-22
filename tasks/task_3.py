@@ -9,7 +9,7 @@ def strip_ends(arr):
     """
     #arr[slice(arr[0],len(arr)-1)]
    
-    return [item for item in arr if (item is not  arr[0]) and  (item is not arr[len(arr)-1]) ]
+    return [item for item in arr[1:len(arr)-1]]
 
 def strip_chars(string):
     """

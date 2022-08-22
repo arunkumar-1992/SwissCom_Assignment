@@ -8,9 +8,10 @@ def head_above_avg(args):
     :param args:
     :return: true if head above average
     """
-    head, *tail=args
-    tail_avg=sum(tail)/len(tail)
-    return True  if head > tail_avg else False
+    #head, *tail=args
+    #tail_avg=sum(tail)/len(tail)
+    #return True  if head > tail_avg else False
+    return True  if args[0] > sum([item for item in args[1:]])/(len(args)-1) else False
 
 
 def unpack_name_and_year(record):
