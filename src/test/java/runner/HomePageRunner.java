@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 
-@CucumberOptions(tags = "", glue = { "stepDefinition" }, plugin = { "html:target/cucumber-reports/cucumber-pretty",
+@CucumberOptions(tags = "@tc_1", glue = { "stepDefinition" }, plugin = { "html:target/cucumber-reports/cucumber-pretty",
 		"json:target/json-cucumber-reports/default/cukejson.json",
 		"testng:target/testng-cucumber-reports/cuketestng.xml" }, features = { "src/test/resources/features" })
 public class HomePageRunner extends Runner {

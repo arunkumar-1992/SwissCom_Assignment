@@ -5,9 +5,9 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,11 +15,24 @@ public class SwisscomHomepage extends SwissCom {
 	
 	public WebDriver driver;
 	
+	
+	
+	
+	
+	
+	
+	
+	@FindBy(xpath="//div[contains(@class,'render-header')]//sdx-header")
+	WebElement elesearchHeader;
+	
 	@FindBy(xpath="//button[text()='Accept']")
 	WebElement eleAcceptButton;
 	
-	@FindBy(xpath="//sdx-price[@class='hydrated']/ancestor::div/div[text()='Apple iPhone 13']/ancestor::a[contains(@href,'iphone-13')]")
-	List<WebElement> eleIphone; 
+	@FindBy(xpath="//div[@class='result-info default']/p")
+	WebElement eleResultInfo;
+	
+	String phoneLink="//h2/a[text()='%s']";
+	
 	
 	@FindBy(xpath="//span[text()='Internet']")
 	List<WebElement> eleInternet;
@@ -27,8 +40,7 @@ public class SwisscomHomepage extends SwissCom {
 	@FindBy(xpath="//input[@value='Green']")
 	WebElement eleColorBox;
 	
-	String mobilecolor="//div[@class='color-list']//input[@value='%s']";
-	//div[@class='color-list']//input[@value='Green']
+	String mobilecolor="//div[@class='color-list']//label//input[@value='%s' and @type='radio']]";
 	
 	String stringSearch="//div[contains(text(),'%s')]";
 	
@@ -59,35 +71,48 @@ public class SwisscomHomepage extends SwissCom {
 		
 	}
 	
-	public void searchForGivenString(String string) {
-		try {
-			Thread.sleep(3000);
-			if(string.contains("iPhone")) {
-				isAvailable=eleIphone.isEmpty();
-				
-			}else if(string.contains("Internet")) {
-				isAvailable=eleInternet.isEmpty();
-			
-			}
-			if(!isAvailable) {
-				System.out.println("Given String" +string+" is available on Swisscom page");
-			}
-		
-			
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public  SearchContext getShadowRootElement(Object  elesearchHeader) {
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		SearchContext eleShadow=  (SearchContext)jse.executeScript("return arguments[0].shadowRoot", elesearchHeader);
+			       
+		return eleShadow;
 		
 	}
 	
-	public boolean getTheSearchResult() {
-		return !isAvailable;
-		
-		
+	
+	public void executeJavaScript(WebElement element) {
+		String script = "arguments[0].click();";
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript(script,element);
 	}
+	
+	public void searchForGivenString(String string) {
+			//1st code block to handle shadow elements of opening search button
+			SearchContext root1=getShadowRootElement(elesearchHeader);
+			WebElement element1=root1.findElement(By.cssSelector("sdx-icon[class='icon hydrated icon-search']"));
+			SearchContext root2=getShadowRootElement(element1);
+			WebElement element2 = root2.findElement(By.cssSelector("sdx-animation>sdx-flip>span"));
+			executeJavaScript(element2);
+		
+			
+			//2nd code block to enter the text in Search field
+			SearchContext elesearch=getShadowRootElement(driver.findElement(By.cssSelector("scs-search-input")));
+			WebElement elements=elesearch.findElement(By.cssSelector("input"));
+			elements.sendKeys(string);
+			
+	
+			//3rd  below code is to click search button after entering details
+			WebElement elebutton=elesearch.findElement(By.cssSelector("sdx-button"));
+			SearchContext shadowButton=getShadowRootElement(elebutton);
+			WebElement elebutton_icon=shadowButton.findElement(By.cssSelector("sdx-icon"));
+			SearchContext shadowIcon=getShadowRootElement(elebutton_icon);
+			WebElement elebuttonSearch=shadowIcon.findElement(By.cssSelector("sdx-animation>sdx-flip>span"));
+			executeJavaScript(elebuttonSearch);
+	}
+	
+	
+
+
 
 
 	public void switchToNewWindow() {
@@ -104,6 +129,17 @@ public class SwisscomHomepage extends SwissCom {
 		}
 		driver.switchTo().window(mainTab);
 	}
+	
+
+	public String getTheSearchResult() {
+		
+		if(isDisplayed(eleResultInfo)){
+			return eleResultInfo.getText();
+		}
+		return "";
+		
+		
+	}
 
 	
 	public void switchtoSecondTab() {
@@ -112,22 +148,17 @@ public class SwisscomHomepage extends SwissCom {
 	}
 
 	public void selectMobile(String mobileName) {
-		
-			try {
-				JavascriptExecutor jse = (JavascriptExecutor)driver;
-				jse.executeScript("arguments[0].click()", eleIphone.get(1));
-				Thread.sleep(5);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+		String xpath=phoneLink.replace("%s", mobileName);
+		WebElement elephoneLink=driver.findElement(By.xpath(xpath));
+		isDisplayed(elephoneLink);
+		elephoneLink.click();
 		
 	}
 	
 	public void clickOnMobileColor(String color) {
-		mobilecolor=mobilecolor.replace("%s", color);
-		WebElement eleColorBox=driver.findElement(By.xpath(mobilecolor));
+		String eleColor=mobilecolor.replace("%s", color);
+		WebElement eleColorBox=driver.findElement(By.xpath(eleColor));
+		isDisplayed(eleColorBox);
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].click()", eleColorBox);
 		

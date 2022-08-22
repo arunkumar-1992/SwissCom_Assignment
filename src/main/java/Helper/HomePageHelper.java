@@ -4,7 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.List;
 
-import pages.SwissCom;
 import pages.SwisscomHomepage;
 
 public class HomePageHelper extends ScriptHelper {
@@ -23,7 +22,13 @@ public class HomePageHelper extends ScriptHelper {
 	}
 
 	public boolean verifyStringIsAvailable(String string) {
-		return homepage.getTheSearchResult();
+		String text= homepage.getTheSearchResult();
+		String expected ="results found for "+'"'+string+'"';
+		if(text.contains(expected)) {
+			return true;
+		}
+		return false;
+		
 		
 		
 	}

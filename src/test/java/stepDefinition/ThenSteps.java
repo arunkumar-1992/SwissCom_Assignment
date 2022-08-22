@@ -17,13 +17,12 @@ public class ThenSteps {
 	public void verify_search_returned_result(String string) {
 		boolean bool=homepage.verifyStringIsAvailable(string);
 		assertTrue(bool,string +"  is not available on swisscom home page");
-		//assert.assertEquals(false, page);
 	}
 	
 	
 	@Then("Verify different storage options avaialble for different colors")
 	public void verify_different_storage_options_avaialble_for_different_colors() {
-		String[] colors = {"Green","(PRODUCT)RED","Midnight","Blue","Starlight","Pink"};
+		String[] colors = {"Pink","Blue","Midnight","Starlight","Green"};
 		 List<String> colors_list = new ArrayList<String>(Arrays.asList(colors));
 		
 		String[] storage = {"128","256","512"};

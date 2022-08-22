@@ -1,6 +1,7 @@
 package runner;
 
-import java.util.concurrent.TimeUnit;
+
+import java.time.Duration;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
@@ -22,16 +23,13 @@ public class Runner extends SwissCom {
 		this.testNGCucumberRunner = testNGCucumberRunner;
 	}
 
-	///Drivers\\gecko\\geckodriver.exe
 	@BeforeSuite(alwaysRun = true)
 	public void initalizeDriver() throws Exception {
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-		///src/main/resources/Drivers/chrome/chromedriver.exe"
 		System.setProperty("webdriver.chrome.driver",
 				System.getProperty("user.dir") + "./Drivers\\chrome\\chromedriver.exe");
-
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 	}
 	
