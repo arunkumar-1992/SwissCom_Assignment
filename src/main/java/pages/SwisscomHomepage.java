@@ -40,7 +40,7 @@ public class SwisscomHomepage extends SwissCom {
 	@FindBy(xpath="//input[@value='Green']")
 	WebElement eleColorBox;
 	
-	String mobilecolor="//div[@class='color-list']//label//input[@value='%s' and @type='radio']]";
+	String mobilecolor="//div[@class='color-list']//label//input[@value='%s' and @type='radio']";
 	
 	String stringSearch="//div[contains(text(),'%s')]";
 	
@@ -83,7 +83,14 @@ public class SwisscomHomepage extends SwissCom {
 	public void executeJavaScript(WebElement element) {
 		String script = "arguments[0].click();";
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript(script,element);
+		try {
+			Thread.sleep(3000);
+			jse.executeScript(script,element);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void searchForGivenString(String string) {
@@ -156,11 +163,17 @@ public class SwisscomHomepage extends SwissCom {
 	}
 	
 	public void clickOnMobileColor(String color) {
-		String eleColor=mobilecolor.replace("%s", color);
-		WebElement eleColorBox=driver.findElement(By.xpath(eleColor));
-		isDisplayed(eleColorBox);
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("arguments[0].click()", eleColorBox);
+		try {
+			Thread.sleep(3000);
+			String eleColor=mobilecolor.replace("%s", color);
+			WebElement eleColorBox=driver.findElement(By.xpath(eleColor));
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("arguments[0].click()", eleColorBox);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 
