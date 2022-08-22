@@ -13,8 +13,8 @@ def spawn_threads(count):
     Spawns given number of threads, each thread starting a countdown
     :param count threads
     """
-    for i in range(0,count):
-        countdown("starting a countdown ",i)
+    
+    countdown("starting a countdown ",count)
 
 
 spawn_threads(4)

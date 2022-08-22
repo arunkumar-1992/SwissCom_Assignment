@@ -10,7 +10,7 @@ def head_above_avg(args):
     """
     head, *tail=args
     tail_avg=sum(tail)/len(tail)
-    return True if head > tail_avg else False
+    return True  if head > tail_avg else False
 
 
 def unpack_name_and_year(record):

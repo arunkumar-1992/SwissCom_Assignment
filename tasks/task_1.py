@@ -14,7 +14,7 @@ def create_tree(height):
     :param height of the tree
     :return: list of strings to be printed
     """
-    j = 0
+    """j = 0
     list=[]
 
     for i in range(1, height+1):
@@ -31,9 +31,12 @@ def create_tree(height):
             pattern=pattern+" "
         j = 0
         list.append(pattern)
-    return list
+    return list"""
+    #left and right side n-i spaces and * are (2i-1)
+    return [" "*(height-i)+"*"*((2*i)-1)+""+" "*(height-i) for i in range(1, height+1)]
 
 
 def print_tree(height):
     for line in create_tree(height):
         print("".join(line))
+
